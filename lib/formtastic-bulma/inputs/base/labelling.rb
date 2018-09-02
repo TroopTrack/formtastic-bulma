@@ -8,9 +8,7 @@ module FormtasticBulma
         # def control_label_html
         def label_html
           if render_label?
-            template.content_tag(:span, :class => 'label') do
-              builder.label(input_name, label_text, label_html_options)
-            end
+            builder.label(input_name, label_text, label_html_options)
           else
             "".html_safe
           end

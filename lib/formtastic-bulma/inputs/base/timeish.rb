@@ -3,12 +3,12 @@ module FormtasticBulma
     module Base
       module Timeish
         FRAGMENT_CLASSES = {
-          :year   => "col-xs-2",
-          :month  => "col-xs-3",
-          :day    => "col-xs-1",
-          :hour   => "col-xs-offset-3 col-xs-1",
-          :minute => "col-xs-1",
-          :second => "col-xs-1"
+          :year   => "column",
+          :month  => "column",
+          :day    => "column",
+          :hour   => "column",
+          :minute => "column",
+          :second => "column"
         }
 
         FRAGMENT_PLACEHOLDERS = {
@@ -34,7 +34,7 @@ module FormtasticBulma
         def row_wrapping(&block)
           template.content_tag(:div,
             template.capture(&block).html_safe,
-            :class => 'row'
+            :class => 'columns'
           )
         end
 

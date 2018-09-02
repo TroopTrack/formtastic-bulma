@@ -15,7 +15,18 @@ module FormtasticBulma
         def bootstrap_wrapping(&block)
           form_group_wrapping do
             label_html <<
-            template.content_tag(:span, :class => 'control') do
+            template.content_tag(:div, :class => 'control') do
+              input_content(&block) <<
+              hint_html(:block) <<
+              error_html(:block)
+            end
+          end
+        end
+
+        def select_wrapping(&block)
+          form_group_wrapping do
+            label_html <<
+            template.content_tag(:div, :class => 'select') do
               input_content(&block) <<
               hint_html(:block) <<
               error_html(:block)
@@ -45,7 +56,7 @@ module FormtasticBulma
 
         def add_on_content(content)
           return nil unless content
-          template.content_tag(:span, content, :class => 'input-group-addon')
+          template.content_tag(:div, content, :class => 'input-group-addon')
         end
 
         def form_group_wrapping(&block)
@@ -57,7 +68,8 @@ module FormtasticBulma
 
         def wrapper_html_options
           super.tap do |options|
-            options[:class] << " fieldis-wrapped"
+            options[:class] = options[:class].gsub('input', '')
+            options[:class] << " field is-wrapped"
             options[:class] << " has-error" if errors?
           end
         end

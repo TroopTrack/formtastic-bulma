@@ -4,7 +4,7 @@ module FormtasticBulma
       include Base
 
       def to_html
-        bootstrap_wrapping do
+        select_wrapping do
           builder.time_zone_select(method, priority_zones, input_options, input_html_options)
         end
       end

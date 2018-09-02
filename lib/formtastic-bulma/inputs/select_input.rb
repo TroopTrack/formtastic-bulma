@@ -6,7 +6,7 @@ module FormtasticBulma
       include Base::Collections
 
       def to_html
-        bootstrap_wrapping do
+        select_wrapping do
           builder.select(input_name, collection, input_options, form_control_input_html_options)
         end
       end
